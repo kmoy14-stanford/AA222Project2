@@ -73,4 +73,6 @@ plt.xlabel('x1')
 plt.ylabel('x2')
 plt.grid()
 plt.figure(figsize=(10,10))
-# %%
+# %% Simple1
+
+# Try 1 feasible point, 
