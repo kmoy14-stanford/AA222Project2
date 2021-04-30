@@ -5,3 +5,7 @@ project2_jl/Project.toml
 project2_py/__pycache__/helpers.cpython-39.pyc
 *.pyc
 project2.zip
+*.pdf
+*.png
+project2_py/.DS_Store
+.DS_Store
