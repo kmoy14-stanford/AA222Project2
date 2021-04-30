@@ -1,6 +1,7 @@
 #%% Imports
 import matplotlib
 import numpy as np
+import scipy.stats
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 
@@ -65,7 +66,7 @@ plt.legend(['Constraint 1', 'Constraint 2'], bbox_to_anchor=(1.5, 0.6))
 CS = ax.contour(x1, x2, simp2_z, levels = [0, 100, 200, 500, 1000, 2000, 5000, 10000])
 ax.clabel(CS, inline=True, fontsize=10)
 ax.set_aspect('equal', adjustable='box')
-ax.set_title('Simple1')
+ax.set_title('Simple2')
 plt.xlim([-3,3])
 plt.ylim([-3,3])
 plt.xlabel('x1')
