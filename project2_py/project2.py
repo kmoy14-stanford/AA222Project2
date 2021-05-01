@@ -35,15 +35,13 @@ def optimize(f, g, c, x0, n, count, prob):
     nsamp = 100   # number of samples for each distribution
     cov = 4*np.identity(np.size(x0)) # Initial covariance matrix
     nelite = 20 # number of elite samples to pick for new distribution
-    c_scale = 200
-    epsilon = 0.01
+    c_scale = 3000
 
     # Simple Problem-specific stuff:
     if prob == 'simple1':
         c_scale = 10000
         nsamp = 200
         nelite = 80
-        epsilon = 0
     elif prob == 'simple2':
         c_scale = 30000
         nsamp = 200
@@ -78,7 +76,7 @@ def optimize(f, g, c, x0, n, count, prob):
             # Sample from distribution
             samps = np.random.multivariate_normal(mu, cov, nsamp)
             for j in range(nsamp):
-                consts = c(samps[j]+epsilon)
+                consts = c(samps[j])
                 fs[j] = f(samps[j]) + c_scale*np.sum(np.maximum(consts,0)**2)
             # Retrieve indices with lowest function values
             ind = np.argpartition(fs, nelite)[:nelite]
@@ -90,7 +88,7 @@ def optimize(f, g, c, x0, n, count, prob):
         h = 0.01 # stepsize
         x = x0
         # Adam hyperparameters
-        gamma_v = 0.9
+        gamma_v = 0.99
         gamma_s = 0.999
         alpha = 0.01
         k = 0
